@@ -1,5 +1,6 @@
 body{
     margin: 2px;
+    font: 1em sans-serif;
 }
 .app-logo{
     height: 80%;
@@ -41,9 +42,6 @@ body{
     flex-wrap: wrap;
 }
 
-
-
-
 .restaurant-card{
     border: 1px solid black;
     width: 200px;
@@ -69,11 +67,14 @@ body{
     z-index: 2;
     bottom: 4px;
     left: 4px;
+    color: rgb(255, 255, 255);
+    font-size: larger;
+    font-style: bold;
 }
 .details-container *{
     margin: 0;
     padding: 0;
-    margin-left: 10px;
+    margin-left: 5px;
     margin-top: 5px;
 }
 

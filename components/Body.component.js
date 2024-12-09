@@ -8,19 +8,16 @@ const Body = () => {
                 search
             </div>
             <div className="restaurant-container">
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
+                <RestaurantCard 
+                    imageId="urunoz7pzrpxoyakthp4"
+                    offer="20% off over ₹500"
+                    name="Baskin Robbins"
+                    cuisines="Ice Cream, Desserts"
+                    rating="4.2 ⭑"
+                    deliveryTime="20-30 minutes"
+                    address="3283 Homestead Dr"
+                />
+
             </div>
         </div>
     );
