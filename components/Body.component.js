@@ -1,5 +1,6 @@
 import React from 'react';
 import RestaurantCard from './RestaurantCard.component.js';
+import { MOCK_API_RESULT } from '../utils/constants.js';
 
 const Body = () => {
     return (
@@ -8,15 +9,30 @@ const Body = () => {
                 search
             </div>
             <div className="restaurant-container">
-                <RestaurantCard 
-                    imageId="urunoz7pzrpxoyakthp4"
-                    offer="20% off over ₹500"
-                    name="Baskin Robbins"
-                    cuisines="Ice Cream, Desserts"
-                    rating="4.2 ⭑"
-                    deliveryTime="20-30 minutes"
-                    address="3283 Homestead Dr"
-                />
+                {
+                    MOCK_API_RESULT.map((restaurant) => {
+                        let dealHeader = "";
+                        let dealSubHeader = "";
+                        if(restaurant.info.aggregatedDiscountInfoV3){
+                            dealHeader = restaurant.info.aggregatedDiscountInfoV3.header;
+                            dealSubHeader = restaurant.info.aggregatedDiscountInfoV3.subHeader||""; 
+                        }
+                        
+                        return (
+                            <RestaurantCard 
+                                key={restaurant.info.id}
+                                imageId={restaurant.info.cloudinaryImageId}
+                                offer={dealHeader+" "+dealSubHeader}
+                                name={restaurant.info.name}
+                                cuisines={restaurant.info.cuisines.join(", ")}
+                                rating={`⭑ ${restaurant.info.avgRating}`}
+                                deliveryTime={restaurant.info.sla.slaString}
+                                address={restaurant.info.areaName}
+                            />
+                        );
+                    })
+                }
+
 
             </div>
         </div>

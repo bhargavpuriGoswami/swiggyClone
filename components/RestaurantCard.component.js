@@ -11,10 +11,10 @@ return (
         <div className= "details-container"> 
             <h3>{name}</h3>
             <div className="rating-container">
-                <p>{rating}</p>
+                <p>{rating},</p>
                 <p>{deliveryTime}</p>
             </div>
-            <p>{cuisines}</p>
+            <p className="cuisines">{cuisines}</p>
             <p>{address}</p>  
         </div>
     </div>    
