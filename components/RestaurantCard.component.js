@@ -1,6 +1,10 @@
 import React from "react";
 import { restaurantImageURL } from "../utils/constants.js";
 
+function getMenu(){
+    
+}
+
 function RestaurantCard({imageId, offer, name, cuisines, rating, deliveryTime, address}) {
 return (  
     <div className="restaurant-card">
