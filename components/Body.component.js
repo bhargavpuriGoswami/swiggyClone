@@ -3,6 +3,7 @@ import RestaurantCard from './RestaurantCard.component.js';
 import { MOCK_API_RESULT } from '../utils/constants.js';
 import Shimmer from './Shimmer.component.js';
 import Filter from './Filter.component.js';
+import { Link } from 'react-router';
 
 const Body = () => {
 
@@ -37,11 +38,12 @@ const Body = () => {
                     <input type="text" placeholder="Search" className="search-input" 
                     onChange={(e) => {
                         searchQuery = e.target.value
-                        console.log(searchQuery);
                     }}
                     />
                     <button className="search-button"
                     onClick={() => {
+                        const searchBox = document.querySelector(".search-input");
+                        searchBox.value = "";
                         const filteredList = restaurants.filter((restaurant) => {
                             return restaurant.info.name.toLowerCase().includes(searchQuery.toLowerCase());
                         })
@@ -61,7 +63,6 @@ const Body = () => {
             </div>
             <div className="restaurant-container">
                 {
-                    
                     restaurants.map((restaurant) => {
                         let dealHeader = "";
                         let dealSubHeader = "";
@@ -70,8 +71,10 @@ const Body = () => {
                             dealSubHeader = restaurant.info.aggregatedDiscountInfoV3.subHeader||""; 
                         } 
                         
-                        return (
-                            <RestaurantCard 
+                        return (    
+
+                            <Link to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
+                                <RestaurantCard 
                                 key={restaurant.info.id}
                                 imageId={restaurant.info.cloudinaryImageId}
                                 offer={dealHeader+" "+dealSubHeader}
@@ -80,7 +83,8 @@ const Body = () => {
                                 rating={`⭑ ${restaurant.info.avgRating}`}
                                 deliveryTime={restaurant.info.sla.slaString}
                                 address={restaurant.info.areaName}
-                            />
+                                />
+                            </Link>
                         );
                     })
                 }
