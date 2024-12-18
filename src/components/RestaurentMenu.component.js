@@ -27,22 +27,20 @@ function RestaurentMenu() {
     }
     return (
         <div>
-            <h3>
-                <ol>
-                {resMenu.map((card) => {
-                    if (card.card.card.itemCards) {
-                        return <>
-                            <h3 key={card.card.card.title}>{card.card.card.title} {card.card.card.itemCards.length}</h3>
-                            {card.card.card.itemCards.map((item) => {
-                                return <li key={item?.card?.info?.id}>
-                                    {item?.card?.info?.name}
-                                </li>
-                            })}
-                        </>
-                    } 
-                })}
-                </ol>
-            </h3>
+            {resMenu.map((card) => {
+                if (card.card.card.itemCards) {
+                    return <>
+                        <h3 className="font-bold text-xl ml-5" key={card.card.card.title}>{card.card.card.title} {card.card.card.itemCards.length}</h3>
+                        <ol className='list-decimal'>
+                        {card.card.card.itemCards.map((item) => {
+                            return <li className=" ml-20" key={item?.card?.info?.id}>
+                                {item?.card?.info?.name}
+                            </li>
+                        })}
+                        </ol>
+                    </>
+                } 
+            })}
         </div>
     )
 }

@@ -13,12 +13,12 @@ const Header = () => {
     }, [])
 
     return (
-        <div className='header'>
-            <div className='logo-container'>
-                <img className='app-logo' src={logo} alt='swiggy logo' />
+        <div className='m-0 w-full flex justify-between h-12 border border-black'>
+            <div className='h-full w-40'>
+                <img className='h-4/5 mt-1 ml-1' src={logo} alt='swiggy logo' />
             </div>
-            <div className='nav-container'>
-                <ul>
+            <div className='h-full w-2/5 pr-5'>
+                <ul className='h-full font-sans font-bold flex flex-row justify-between items-center'>
                     <li>
                         <Link to="/">   Home   </Link>
                     </li>
@@ -31,14 +31,11 @@ const Header = () => {
                     <li>
                         <Link to="/cart">   Cart   </Link>
                     </li>
-                    <button onClick={() => {
+                    <button className="bg-white py-2 hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow" onClick={() => {
                         btnText === "Login" ? setBtnText("Logout") : setBtnText("Login")
                     }}>
                         {btnText}
                     </button>
-                    <button onClick={() => {
-                        btnText1 === "Login1" ? setBtnText1("Logout1") : setBtnText1("Login1")
-                    }}>{btnText1}</button>
                 </ul>
             </div>
         </div>
