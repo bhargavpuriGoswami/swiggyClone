@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { mock_res_menu } from '../utils/constants';
+import { mock_res_menu } from '../utils/constants.js';
 import Shimmer from './Shimmer.component.js';
 import { useParams } from 'react-router';
 
@@ -23,7 +23,7 @@ function RestaurentMenu() {
         }
     }
     if (resMenu.length == 0) {
-        return <Shimmer />
+        return <h1>Loading...</h1>
     }
     return (
         <div>

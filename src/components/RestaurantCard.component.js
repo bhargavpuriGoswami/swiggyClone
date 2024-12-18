@@ -5,12 +5,20 @@ function getMenu(){
     
 }
 
-function RestaurantCard({imageId, offer, name, cuisines, rating, deliveryTime, address}) {
+function RestaurantCard({imageId, dealHeader, dealSubHeader, name, cuisines, rating, deliveryTime, address}) {
 return (  
     <div className="restaurant-card">
         <div className="img-container">
             <img src={restaurantImageURL+imageId} alt="restaurant card image"/>
-            <div className="offer-container">{offer}</div>    
+            <div  className="offer-container">
+                {dealHeader.length > 0 &&
+                    <span>{dealHeader} </span>    
+                }
+                {dealSubHeader.length > 0 &&
+                    <span>{dealSubHeader}</span>
+                }
+            </div>
+
         </div>
         <div className= "details-container"> 
             <h3>{name}</h3>

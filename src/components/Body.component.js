@@ -77,7 +77,8 @@ const Body = () => {
                                 <RestaurantCard 
                                 key={restaurant.info.id}
                                 imageId={restaurant.info.cloudinaryImageId}
-                                offer={dealHeader+" "+dealSubHeader}
+                                dealHeader={dealHeader}
+                                dealSubHeader={dealSubHeader}
                                 name={restaurant.info.name}
                                 cuisines={restaurant.info.cuisines.join(", ")}
                                 rating={`⭑ ${restaurant.info.avgRating}`}
