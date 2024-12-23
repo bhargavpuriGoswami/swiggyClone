@@ -2,10 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { mock_res_menu } from '../utils/constants.js';
 import Shimmer from './Shimmer.component.js';
 import { useParams } from 'react-router';
+import { useLocation } from 'react-router-dom';
+import deliveryImage from "../public/img/deliveryImage.svg";
+import MenuSection from './menuSection.component.js';
 
 function RestaurentMenu() {
     const [resMenu, setResMenu] = useState([])
     const restaurantId = useParams().resId
+    const location = useLocation();
+    const restaurant= location.state?.restaurant;
+    
     
     useEffect(() => {
         fetchResMenu();
@@ -27,18 +33,19 @@ function RestaurentMenu() {
     }
     return (
         <div>
+            <div className="w-full my-1 mt-0 mx-auto px-10 py-2  rounded-2xl rounded-t-none sticky top-0 z-50 border border-gray-200 bg-white">
+                <p className="font-bold text-xl">{restaurant.info.name}</p>
+                <p className="font-bold text-lg inline-block">⭑ {restaurant.info.avgRatingString} | ({restaurant.info.totalRatingsString} Ratings)</p>
+                <p className='inline-block'>&nbsp;{restaurant.info.costForTwo}</p>
+                <p><img src={deliveryImage} className='h-5 w-5 inline-block'/>  {restaurant.info.sla.slaString}</p>
+            </div>
+
+
+
             {resMenu.map((card) => {
                 if (card.card.card.itemCards) {
-                    return <>
-                        <h3 className="font-bold text-xl ml-5" key={card.card.card.title}>{card.card.card.title} {card.card.card.itemCards.length}</h3>
-                        <ol className='list-decimal'>
-                        {card.card.card.itemCards.map((item) => {
-                            return <li className=" ml-20" key={item?.card?.info?.id}>
-                                {item?.card?.info?.name}
-                            </li>
-                        })}
-                        </ol>
-                    </>
+                    return <MenuSection key={card.card.card.title} title={card.card.card.title} items={card.card.card.itemCards} />
+                        
                 } 
             })}
         </div>

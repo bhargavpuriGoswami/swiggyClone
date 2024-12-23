@@ -1,16 +1,22 @@
-import React from 'react';
-import { useState, useEffect } from "react";
+import React  from 'react';
+import { useState, useEffect, useContext } from "react";
 import { Link } from 'react-router-dom';
 import logo from '../public/img/logo.png';
+import  UserContext  from "./UserContext";
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
-
+    const {LoggedInUser} = useContext(UserContext)
     const [btnText, setBtnText] = useState("Login")
-    const [btnText1, setBtnText1] = useState("Login1")
 
+    const cartItems = useSelector((store)=>store.cart.items)
     useEffect(() => {
-    }, [])
+        console.log("cartItems", cartItems);
+        
+    }, [cartItems])
+
+    
 
     return (
         <div className='m-0 w-full flex justify-between h-12 border border-black'>
@@ -29,10 +35,10 @@ const Header = () => {
                         <Link to="/contact">   Contact us   </Link>
                     </li>
                     <li>
-                        <Link to="/cart">   Cart   </Link>
+                        <Link to="/cart">   Cart-{cartItems.length}   </Link>
                     </li>
                     <button className="bg-white py-2 hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow" onClick={() => {
-                        btnText === "Login" ? setBtnText("Logout") : setBtnText("Login")
+                        btnText === "Login" ? setBtnText(LoggedInUser) : setBtnText("Login")
                     }}>
                         {btnText}
                     </button>

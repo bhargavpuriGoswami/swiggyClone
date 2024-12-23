@@ -3,7 +3,7 @@ import RestaurantCard from './RestaurantCard.component.js';
 import { MOCK_API_RESULT } from '../utils/constants.js';
 import Shimmer from './Shimmer.component.js';
 import Filter from './Filter.component.js';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Body = () => {
 
@@ -71,7 +71,11 @@ const Body = () => {
                         
                         return (    
 
-                            <Link to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
+                            <Link 
+                                  to={{
+                                    pathname: `/restaurant/${restaurant.info.id}`,
+                                    }}
+                                    state={{ restaurant }} key={restaurant.info.id}>
                                 <RestaurantCard 
                                 key={restaurant.info.id}
                                 imageId={restaurant.info.cloudinaryImageId}
