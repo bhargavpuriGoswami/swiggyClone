@@ -1,13 +1,14 @@
 import React from 'react';
-import noImageAvailable from "../public/img/noImageAvailable.jpg";
+import oops from "../public/img/OOOPS.png";
 
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../utils/cartSlice.js';
 
-const OneMenuItem = ({item}) => {
+const OneMenuItem = ({item,resData}) => {
     const dispatch = useDispatch();
     const addItem = () => {
-        dispatch(addToCart(item.card.info))
+
+        dispatch(addToCart([resData,[item.card.info]]))
     }
     return (
         <>
@@ -19,7 +20,7 @@ const OneMenuItem = ({item}) => {
                     <div>{item.card.info.description}</div>
                 </div>
                 <div className="itemPhoto w-1/6 relative">
-                <img className="h-32 w-full rounded-3xl mr-0 relative z-0" src={item.card.info.imageId ? `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${item.card.info.imageId}` : noImageAvailable} alt="item image"/>
+                <img className="h-32 w-40 rounded-3xl mr-0 relative z-0" src={item.card.info.imageId ? `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${item.card.info.imageId}` : oops} alt="item image"/>
                 <button  onClick={addItem} className="addButton absolute z-10 bottom-1 left-1 text-xl  bg-white rounded-3xl px-2 border-2 border-grey-400 hover:bg-gray-100">Add +</button>
                 </div>
             </div>

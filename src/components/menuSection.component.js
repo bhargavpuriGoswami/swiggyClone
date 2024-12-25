@@ -4,7 +4,7 @@ import OneMenuItem from './oneMenuItem.component.js';
 
 
 
-const MenuSection = ({title,items}) => {
+const MenuSection = ({title,items,resData}) => {
     const [collapseArrow, setCollapseArrow] = useState("⌄");
     const [showItems, setShowItems] = useState(false);
     const clickItem = () => {
@@ -19,7 +19,7 @@ const MenuSection = ({title,items}) => {
             </div>
             <div className={showItems == false ? "hidden" : "block"}>
                 {items.map((item) => {
-                    return <OneMenuItem key={item.card.info.name} item={item} />
+                    return <OneMenuItem key={item.card.info.name} item={item} resData={resData} />
                 })}
             </div>
         </div>

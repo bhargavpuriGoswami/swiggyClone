@@ -11,9 +11,15 @@ const Header = () => {
     const [btnText, setBtnText] = useState("Login")
 
     const cartItems = useSelector((store)=>store.cart.items)
+    const [cartCount, setCartCount] = useState(0)
+
     useEffect(() => {
-        console.log("cartItems", cartItems);
-        
+        let count = 0
+        cartItems.map((item) => {
+            // console.log(item[1])
+            // count += item[1].length
+            // console.log(count)
+        })
     }, [cartItems])
 
     
@@ -35,7 +41,7 @@ const Header = () => {
                         <Link to="/contact">   Contact us   </Link>
                     </li>
                     <li>
-                        <Link to="/cart">   Cart-{cartItems.length}   </Link>
+                        <Link to="/cart">   Cart-{cartCount}   </Link>
                     </li>
                     <button className="bg-white py-2 hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow" onClick={() => {
                         btnText === "Login" ? setBtnText(LoggedInUser) : setBtnText("Login")

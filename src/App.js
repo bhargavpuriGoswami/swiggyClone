@@ -13,7 +13,7 @@ import store from "./utils/store/appStore.js";
 
 const Contact = lazy(() => import("./components/Contact.component.js"));
 const RestaurentMenu = lazy(() => import("./components/RestaurentMenu.component.js"));
-
+const Cart = lazy(() => import("./components/Cart.component.js"));
 
 
 const AppLayout = () => {
@@ -48,6 +48,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurant/:resId",
                 element:  <Suspense fallback={<h1>Loading...</h1>}><RestaurentMenu /></Suspense>,
+            },
+            {
+                path: "/cart",
+                element: <Suspense fallback={<h1>Loading...</h1>}><Cart /></Suspense>,
             }
         ],
     },

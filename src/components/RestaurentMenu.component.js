@@ -11,6 +11,12 @@ function RestaurentMenu() {
     const restaurantId = useParams().resId
     const location = useLocation();
     const restaurant= location.state?.restaurant;
+    const resData = {
+        name: restaurant.info.name,
+        id: restaurant.info.id,
+        image: restaurant.info.cloudinaryImageId
+    }
+    
     
     
     useEffect(() => {
@@ -44,8 +50,7 @@ function RestaurentMenu() {
 
             {resMenu.map((card) => {
                 if (card.card.card.itemCards) {
-                    return <MenuSection key={card.card.card.title} title={card.card.card.title} items={card.card.card.itemCards} />
-                        
+                    return <MenuSection key={card.card.card.title} title={card.card.card.title} items={card.card.card.itemCards} resData={resData}  />
                 } 
             })}
         </div>
