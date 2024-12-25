@@ -11,13 +11,20 @@ const CartComponent = () => {
     
     useEffect(() => {
     }, [cartItems])
+
+    if (cartItems.length === 0) {
+        return <p>Cart is empty</p>
+    }
+
+
     return (
         <div>
             <h2>Shopping Cart</h2>
             <button onClick={() => {dispatch(clearCart())}} className="bg-white py-2 hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow">Clear Cart</button>
             {cartItems.length > 0 ? 
                 cartItems.map((item) => {
-                const key = useId()
+                    console.log(item[1].length)
+                    const key = useId()
                     return <CartSection key={key} item={item}/>
                 })
                 : <p>Cart is empty</p>
@@ -25,5 +32,4 @@ const CartComponent = () => {
         </div>
     );
 };
-
 export default CartComponent;

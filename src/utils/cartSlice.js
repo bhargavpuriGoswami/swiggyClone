@@ -37,8 +37,8 @@ const cartSlice = createSlice({
                     }
                 }
                 if (existingRestaurant[1].length === 0) {
-                    console.log(existingRestaurant[0].id);
-                    const newItems = state.items.filter((item) => item[0].id !== action.payload[0].id);
+                    const filteredItems = state.items.filter((item) => item[0].id !== action.payload[0].id);
+                    state.items = [...filteredItems];
                 }
             }
         },

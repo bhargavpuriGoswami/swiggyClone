@@ -16,10 +16,12 @@ const Header = () => {
     useEffect(() => {
         let count = 0
         cartItems.map((item) => {
-            // console.log(item[1])
-            // count += item[1].length
-            // console.log(count)
+            item[1].map((i) => {
+                if(i.quantity){
+                    count += i.quantity}
+            })
         })
+        setCartCount(count)
     }, [cartItems])
 
     

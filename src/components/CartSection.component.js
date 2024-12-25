@@ -6,7 +6,6 @@ const CartSection = ({item}) => {
     const items = item.slice(1);
 
     useEffect(() => {
-        console.log(items.length)
     }, [items])
     
     if (items.length === 0) {
@@ -18,7 +17,6 @@ const CartSection = ({item}) => {
         <div className="border  border-gray-400 p-3 m-5">
             <h2>{restaurant.name}</h2>
             {items[0].map((item) => {
-                console.log(item.price)
                 return <OneCartItem key={item.id} item={item} restaurant={restaurant}/> 
             })} 
             <div className="flex justify-between m-3">

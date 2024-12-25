@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import oops from "../public/img/OOOPS.png";
 
 import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../utils/cartSlice.js';
 
 const OneCartItem = ({ item , restaurant }) => {
+
+    useEffect(() => {
+    }, [item])
     const dispatch = useDispatch();
     const addItem = () => {
         dispatch(addToCart([restaurant,[item]]))
