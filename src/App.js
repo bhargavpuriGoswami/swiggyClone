@@ -13,7 +13,7 @@ import store from "./utils/store/appStore.js";
 
 const Contact = lazy(() => import("./components/Contact.component.js"));
 const RestaurentMenu = lazy(() => import("./components/RestaurentMenu.component.js"));
-const Cart = lazy(() => import("./components/Cart.component.js"));
+const Cart = lazy(() => import("./components/testCart.js"));
 
 
 const AppLayout = () => {
