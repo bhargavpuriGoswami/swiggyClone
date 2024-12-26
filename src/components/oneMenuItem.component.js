@@ -8,8 +8,7 @@ import { addItem } from '../utils/cartSlice';
 const OneMenuItem = ({item,resData}) => {
     const dispatch = useDispatch();
     const addItemCart = () => {
-        dispatch(addItem(item.card.info))
-        // dispatch(addToCart([resData,[item.card.info]]))
+        dispatch(addItem([resData,[item.card.info]]))
     }
     return (
         <>

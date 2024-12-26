@@ -13,7 +13,7 @@ import store from "./utils/store/appStore.js";
 
 const Contact = lazy(() => import("./components/Contact.component.js"));
 const RestaurentMenu = lazy(() => import("./components/RestaurentMenu.component.js"));
-const Cart = lazy(() => import("./components/testCart.js"));
+const Cart = lazy(() => import("./components/Cart.component.js"));
 
 
 const AppLayout = () => {
@@ -59,8 +59,8 @@ const appRouter = createBrowserRouter([
 
 
 
-
-const root=ReactDOM.createRoot(document.getElementById("root"));
+const container = document.getElementById("root");
+const root=ReactDOM.createRoot(container);
 root.render(
     <RouterProvider router={appRouter} />
 );
