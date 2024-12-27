@@ -5,12 +5,14 @@ import { useParams } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import deliveryImage from "../public/img/deliveryImage.svg";
 import MenuSection from './menuSection.component.js';
+import loadingGif from "../public/img/elastic.gif";
 
 function RestaurentMenu() {
     const [resMenu, setResMenu] = useState([])
     const restaurantId = useParams().resId
     const location = useLocation();
     const restaurant= location.state?.restaurant;
+    
     const resData = {
         name: restaurant.info.name,
         id: restaurant.info.id,
@@ -35,7 +37,7 @@ function RestaurentMenu() {
         }
     }
     if (resMenu.length == 0) {
-        return <h1>Loading...</h1>
+        return <div className="h-full flex justify-center items-center"><img src={loadingGif} alt="loading" /></div>
     }
     return (
         <div>

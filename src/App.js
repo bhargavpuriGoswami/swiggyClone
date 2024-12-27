@@ -9,6 +9,8 @@ import Error from "./components/Error.component.js";
 //import RestaurentMenu from "./components/RestaurentMenu.component.js";
 import {Provider } from "react-redux";
 import store from "./utils/store/appStore.js";
+import loadingGif from "./public/img/elastic.gif";
+import oops from "./public/img/OOOPS.png";
 
 
 const Contact = lazy(() => import("./components/Contact.component.js"));
@@ -43,15 +45,15 @@ const appRouter = createBrowserRouter([
             },
             {
                 path: "/contact",
-                element: <Suspense fallback={<h1>Loading...</h1>}><Contact /></Suspense>,
+                element: <Suspense fallback={<div className="h-full flex items-center justify-center"><img src={loadingGif} alt="loading" /></div>}><Contact /></Suspense>,
             },
             {
                 path: "/restaurant/:resId",
-                element:  <Suspense fallback={<h1>Loading...</h1>}><RestaurentMenu /></Suspense>,
+                element:  <Suspense fallback={<div className="h-full flex items-center justify-center"><img src={loadingGif} alt="loading" /></div>}><RestaurentMenu /></Suspense>,
             },
             {
                 path: "/cart",
-                element: <Suspense fallback={<h1>Loading...</h1>}><Cart /></Suspense>,
+                element: <Suspense fallback={<div className="h-full flex items-center justify-center"><img src={loadingGif} alt="loading" /></div>}><Cart /></Suspense>,
             }
         ],
     },

@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { addItem, removeItem } from '../utils/cartSlice';   
 import oops from "../public/img/OOOPS.png";
 import OneCartSection from './OneCartSection';
+import empty_cart from "../public/img/empty-cart.png";
+import { Link } from 'react-router-dom';
 
 
 const TestCart = () => {
@@ -15,7 +17,14 @@ const TestCart = () => {
     }, [cartItems])
 
     if (cartItems.length === 0) {
-        return <p>Cart is empty</p>
+        return(
+            <div className="flex flex-col items-center">
+                <img src={empty_cart} alt="Cart empty." />
+                <p className="text-2xl font-bold text-orange-500">YOUR CART IS CURRENTLY EMPTY!</p>
+                <Link to="/"><button className=" text-xl bg-orange-300 py-2 hover:bg-orange-500 text-black font-bold px-4 border border-gray-400 rounded-3xl shadow my-6">Continue Shopping</button></Link>
+            </div>
+        )
+        
     }
 
     return (

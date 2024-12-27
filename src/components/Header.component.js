@@ -43,9 +43,9 @@ const Header = () => {
                         <Link to="/contact">   Contact us   </Link>
                     </li>
                     <li>
-                        <Link to="/cart">   Cart-{cartCount}   </Link>
+                        <Link to="/cart">   Cart<span className=" px-1 text-orange-400 border-2 border-orange-400  ml-1">{cartCount}</span>   </Link>
                     </li>
-                    <button className="bg-white py-2 hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow" onClick={() => {
+                    <button className="bg-white py-2 hover:bg-orange-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded-3xl shadow" onClick={() => {
                         btnText === "Login" ? setBtnText(LoggedInUser) : setBtnText("Login")
                     }}>
                         {btnText}
