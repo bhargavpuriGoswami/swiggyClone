@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html",
+    "watch-test": "jest --watch"
   },
   "author": "Bhargav Goswami",
   "license": "ISC",

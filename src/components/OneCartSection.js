@@ -27,9 +27,9 @@ const OneCartSection = ({oneSection}) => {
             </>
         )
         })}
-        <div className="flex justify-between p-3">
-        <p className="font-bold m-4">Total Price: {totalPrice}.00</p>
-        <button className=" bg-orange-300 hover:bg-green-300 text-black font-semibold px-4 border border-gray-400 rounded-3xl shadow">Place Order</button>
+        <div className="flex justify-between pt-3 items-center">
+            <p className="font-bold m-4">Total Price: {totalPrice}.00</p>
+            <button className=" h-2/3 bg-orange-200 py-2 hover:bg-orange-300 text-gray-800 font-semibold px-4 border border-gray-400 rounded-3xl shadow">Place Order</button>
         </div>
         
     </div>

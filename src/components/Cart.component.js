@@ -32,7 +32,7 @@ const TestCart = () => {
         <div>
         <div className="flex justify-between py-2 w-2/3 mx-auto">
             <h2 className='text-2xl font-bold'>Your shopping cart</h2>
-            <button onClick={() => {dispatch(clearCart())}} className="bg-white py-2 hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow">Clear Cart</button>
+            <button onClick={() => {dispatch(clearCart())}} className="bg-white py-2 hover:bg-orange-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded-3xl shadow">Clear Cart</button>
         </div>
         
         { cartItems.map((oneSection) => {
