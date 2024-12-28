@@ -1,5 +1,6 @@
 import React from 'react';
 import oops from "../public/img/OOOPS.png";
+import add from "../public/img/add.png";
 
 import { useDispatch } from 'react-redux';
 import { addItem } from '../utils/cartSlice';
@@ -21,7 +22,9 @@ const OneMenuItem = ({item,resData}) => {
                 </div>
                 <div className="itemPhoto w-1/6 relative">
                 <img className="h-32 w-40 rounded-3xl mr-0 relative z-0" src={item.card.info.imageId ? `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${item.card.info.imageId}` : oops} alt="item image"/>
-                <button  onClick={addItemCart} className="addButton absolute z-10 bottom-1 left-1 text-xl  bg-white rounded-3xl px-2 border-2 border-grey-400 hover:bg-gray-100">Add +</button>
+                <button  onClick={addItemCart} className="addButton absolute z-10 bottom-1 left-1 text-md  bg-white rounded-3xl px-2 py-1 border-2  hover:bg-orange-200 flex items-center">
+                    Add&nbsp;<img className="h-5 w-5 inline" src={add} alt="add to cart" />
+                </button>
                 </div>
             </div>
             <hr className="w-full"/>

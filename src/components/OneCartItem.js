@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addItem, removeItem } from '../utils/cartSlice';
+import { addItem, removeItem, deleteItem } from '../utils/cartSlice';
 import oops from "../public/img/OOOPS.png";
+import cancel from "../public/img/cancel.png";
 
 const OneCartItem = ({ item, restaurant }) => {
     const dispatch = useDispatch();
@@ -10,6 +11,9 @@ const OneCartItem = ({ item, restaurant }) => {
     }
     const remove= () => {
         dispatch(removeItem([restaurant,[item]]))
+    }
+    const deleteI = () => {
+        dispatch(deleteItem([restaurant,[item]]))
     }
     if (item.quantity === 0) {
         return;
@@ -32,7 +36,9 @@ const OneCartItem = ({ item, restaurant }) => {
                     <button onClick={add} className=" h-8 w-8 text-xl  bg-white rounded-3xl px-2 border-2 border-grey-400 hover:bg-gray-100">+</button>
                 </div>
                 <div className="flex justify-between w-1/12 ">
-                    <button className=" h-7 w-7 text-l bg-white-2  hover:bg-red-100 mx-auto">x</button>
+                    <button onClick={deleteI} className=" h-7 w-7 text-l bg-white-2  hover:bg-red-100 rounded-3xl mx-auto">
+                        <img src={cancel} alt="cancel image"/>
+                    </button>
                 </div>
                 
             </div>

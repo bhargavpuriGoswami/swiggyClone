@@ -4,8 +4,8 @@ import { restaurantImageURL } from "../utils/constants.js";
 
 function RestaurantCard({imageId, dealHeader, dealSubHeader, name, cuisines, rating, deliveryTime, address}) {
 return (  
-    <div className="restaurant-card w-64 h-96 m-2 mx-3 hover:opacity-50">
-        <div className="img-container relative w-full h-1/2">
+    <div className="restaurant-card w-64 h-80 m-2 mx-3 hover:shadow-xl hover:shadow-gray-200 rounded-2xl">
+        <div className="img-container relative w-full h-3/6">
             <img src={restaurantImageURL+imageId} alt="restaurant card image" className="w-full h-full relative z-10 rounded-2xl"/>
             <div  className="offer-container absolute z-20 bottom-1 left-1 text-white text-sm bg-orange-500 rounded-full p-1 font-bold ">
                 {dealHeader.length > 0 &&

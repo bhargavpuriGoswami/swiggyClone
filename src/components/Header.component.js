@@ -29,7 +29,9 @@ const Header = () => {
     return (
         <div className='m-0 w-full flex justify-between h-12 bg-gray-50 '>
             <div className='h-full w-40'>
-                <img className=' h-4/5 mt-1 ml-1 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300' src={logo} alt='swiggy logo' />
+                <Link to="/"> 
+                <img className=' h-4/5 mt-1 ml-8 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300' src={logo} alt='swiggy logo' />
+                </Link>
             </div>
             <div className='h-full w-2/5 pr-5'>
                 <ul className='h-full font-sans font-bold flex flex-row justify-between items-center'>
