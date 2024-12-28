@@ -86,7 +86,7 @@ const Body = () => {
                                 dealSubHeader={dealSubHeader}
                                 name={restaurant.info.name}
                                 cuisines={restaurant.info.cuisines.join(", ")}
-                                rating={`⭑ ${restaurant.info.avgRating}`}
+                                rating={restaurant.info.avgRating}
                                 deliveryTime={restaurant.info.sla.slaString}
                                 address={restaurant.info.areaName}
                                 />

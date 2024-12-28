@@ -1,5 +1,6 @@
 import React from "react";
 import { restaurantImageURL } from "../utils/constants.js";
+import star from "../public/img/star.png";
 
 
 function RestaurantCard({imageId, dealHeader, dealSubHeader, name, cuisines, rating, deliveryTime, address}) {
@@ -20,8 +21,13 @@ return (
         <div className= "details-container m-0 p-0 ml-3 mt-2"> 
             <h3 className='font-bold text-lg'>{name}</h3>
             <div className="rating-container flex mt-1">
-                <p>{rating},</p>
-                <p>{deliveryTime}</p>
+                <p className="flex items-center">
+                    {rating}
+                    &nbsp;
+                    <img src={star} alt="star" className="h-4 w-4 inline"/>
+                    ,
+                </p>
+                <p>&nbsp;{deliveryTime}</p>
             </div>
             <p className="cuisines text-xs text-gray-600">{cuisines}</p>
             <p>{address}</p>  
