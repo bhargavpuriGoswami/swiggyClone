@@ -9,12 +9,11 @@ export default function Login({ openModal }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const { showLoginForm, setShowLoginForm } = useContext(LoginFormContext);
-
+  const { loginBtnText, setLoginBtnText } = useContext(LoginFormContext);
   function onCloseModal() {
     setEmail('');
     setShowLoginForm(false);
-    console.log(showLoginForm);
-    navigate(-1);
+    setLoginBtnText("Login");
   }
   return (
     <>

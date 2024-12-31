@@ -11,7 +11,7 @@ import {Provider } from "react-redux";
 import store from "./utils/store/appStore.js";
 import loadingGif from "./public/img/elastic.gif";
 import LoginFormContext from "./components/Contexts/LoginFormContext.js";
-
+import LoginFormContextProvider from "./components/Contexts/LoginFormContextProvider.js";
 
 const Contact = lazy(() => import("./components/Contact.component.js"));
 const RestaurentMenu = lazy(() => import("./components/RestaurentMenu.component.js"));
@@ -20,14 +20,13 @@ const Login = lazy(() => import("./components/Login.component.js"));
 
 
 const AppLayout = () => {
-    const [showLoginForm, setShowLoginForm] = React.useState(false);
     return (
         <>
             <Provider store={store}> 
-                <LoginFormContext.Provider value={{ showLoginForm, setShowLoginForm}}>
+                <LoginFormContextProvider>
                     <Header />
                     <Outlet />
-                </LoginFormContext.Provider>
+                </LoginFormContextProvider>
             </Provider>
         </>
     );

@@ -8,14 +8,13 @@ import { useSelector } from 'react-redux';
 
 
 const Header = () => {
-    const [btnText, setBtnText] = useState("Login")
     const [openModal, setOpenModal] = useState(false);
     const [currentPage, setCurrentPage] = useState("/");
     const cartItems = useSelector((store)=>store.cart.items)
     const [cartCount, setCartCount] = useState(0)
 
     const { showLoginForm, setShowLoginForm } = useContext(LoginFormContext);
-
+    const {loginBtnText, setLoginBtnText} = useContext(LoginFormContext);
     useEffect(() => {
         let count = 0
         cartItems.map((item) => {
@@ -26,18 +25,14 @@ const Header = () => {
         })
         setCartCount(count)
     }, [cartItems])
-
-    const navigate = useNavigate();
     const handleLogin = () => {
-        if(btnText === "Login"){
-            setBtnText("Logout")
-            navigate(currentPage)
+        if(loginBtnText === "Login"){
+            setLoginBtnText("Logout")
             setShowLoginForm(true)
 
         }
         else{
             setShowLoginForm(false)
-            setBtnText("Login")
         }
     }
 
@@ -68,7 +63,7 @@ const Header = () => {
                         <Link to={{pathname: `/cart`,}}>Cart<span className=" px-1 text-orange-400 border-2 border-orange-400  ml-1">{cartCount}</span></Link>
                     </li>
                     <button className="bg-white py-2 hover:bg-orange-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded-3xl shadow" 
-                    onClick={handleLogin}>{btnText}
+                    onClick={handleLogin}>{loginBtnText}
                     </button>
                 </ul>
             </div>
