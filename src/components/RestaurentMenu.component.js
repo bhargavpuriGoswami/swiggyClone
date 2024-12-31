@@ -6,6 +6,10 @@ import { useLocation } from 'react-router-dom';
 import deliveryImage from "../public/img/deliveryImage.svg";
 import MenuSection from './menuSection.component.js';
 import loadingGif from "../public/img/elastic.gif";
+import Login from "./Login.component.js";
+import { useContext } from "react";
+import LoginFormContext from "./Contexts/LoginFormContext.js";
+
 
 function RestaurentMenu() {
     const [resMenu, setResMenu] = useState([])
@@ -19,6 +23,7 @@ function RestaurentMenu() {
         image: restaurant.info.cloudinaryImageId
     }
     
+    const {showLoginForm, setShowLoginForm} = useContext(LoginFormContext);
     
     
     useEffect(() => {
@@ -36,26 +41,38 @@ function RestaurentMenu() {
             console.log("MOCK")
         }
     }
+    const page = () => {
+        return(
+            <div>
+                <div className="w-full my-1 mt-0 mx-auto px-10 py-2  rounded-2xl rounded-t-none sticky top-0 z-50 border border-gray-200 bg-white">
+                    <p className="font-bold text-xl">{restaurant.info.name}</p>
+                    <p className="font-bold text-lg inline-block">⭑ {restaurant.info.avgRatingString} | ({restaurant.info.totalRatingsString} Ratings)</p>
+                    <p className='inline-block'>&nbsp;{restaurant.info.costForTwo}</p>
+                    <p><img src={deliveryImage} className='h-5 w-5 inline-block'/>  {restaurant.info.sla.slaString}</p>
+                </div>
+
+
+
+                {resMenu.map((card) => {
+                    if (card.card.card.itemCards) {
+                        return <MenuSection key={card.card.card.title} title={card.card.card.title} items={card.card.card.itemCards} resData={resData}  />
+                    } 
+                })}
+            </div>
+        )
+    }
+
     if (resMenu.length == 0) {
         return <div className="h-full flex justify-center items-center"><img src={loadingGif} alt="loading" /></div>
     }
     return (
-        <div>
-            <div className="w-full my-1 mt-0 mx-auto px-10 py-2  rounded-2xl rounded-t-none sticky top-0 z-50 border border-gray-200 bg-white">
-                <p className="font-bold text-xl">{restaurant.info.name}</p>
-                <p className="font-bold text-lg inline-block">⭑ {restaurant.info.avgRatingString} | ({restaurant.info.totalRatingsString} Ratings)</p>
-                <p className='inline-block'>&nbsp;{restaurant.info.costForTwo}</p>
-                <p><img src={deliveryImage} className='h-5 w-5 inline-block'/>  {restaurant.info.sla.slaString}</p>
-            </div>
-
-
-
-            {resMenu.map((card) => {
-                if (card.card.card.itemCards) {
-                    return <MenuSection key={card.card.card.title} title={card.card.card.title} items={card.card.card.itemCards} resData={resData}  />
-                } 
-            })}
-        </div>
+        showLoginForm? 
+        <>
+            {page()}
+            <Login openModal={showLoginForm} />
+        </>
+        :
+        page()
     )
 }
 

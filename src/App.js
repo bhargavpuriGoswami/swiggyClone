@@ -10,20 +10,24 @@ import Error from "./components/Error.component.js";
 import {Provider } from "react-redux";
 import store from "./utils/store/appStore.js";
 import loadingGif from "./public/img/elastic.gif";
-import oops from "./public/img/OOOPS.png";
+import LoginFormContext from "./components/Contexts/LoginFormContext.js";
 
 
 const Contact = lazy(() => import("./components/Contact.component.js"));
 const RestaurentMenu = lazy(() => import("./components/RestaurentMenu.component.js"));
 const Cart = lazy(() => import("./components/Cart.component.js"));
+const Login = lazy(() => import("./components/Login.component.js"));
 
 
 const AppLayout = () => {
+    const [showLoginForm, setShowLoginForm] = React.useState(false);
     return (
         <>
-            <Provider store={store}>   
-                <Header />
-                <Outlet /> 
+            <Provider store={store}> 
+                <LoginFormContext.Provider value={{ showLoginForm, setShowLoginForm}}>
+                    <Header />
+                    <Outlet />
+                </LoginFormContext.Provider>
             </Provider>
         </>
     );
@@ -54,7 +58,7 @@ const appRouter = createBrowserRouter([
             {
                 path: "/cart",
                 element: <Suspense fallback={<div className="h-full flex items-center justify-center"><img src={loadingGif} alt="loading" /></div>}><Cart /></Suspense>,
-            }
+            },
         ],
     },
 ]);
